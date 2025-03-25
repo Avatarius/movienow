@@ -35,3 +35,18 @@
   line-height: 20px;
   color: #fff;
 }
+
+
+@mixin controlPanelTitle {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 32px;
+  color: #fff;
+}
+
+@mixin controlPanelLabel {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #c4c4c4;
+}
