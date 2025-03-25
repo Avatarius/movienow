@@ -1,0 +1,37 @@
+@mixin header {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 48px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@mixin cardTitle {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 36px;
+  color: #fff;
+}
+
+@mixin cardAccent {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: uppercase;
+  color: #988f8f;
+}
+
+@mixin cardActors {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #fff;
+}
+
+@mixin CardDescription {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+}
