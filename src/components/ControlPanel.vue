@@ -1,15 +1,28 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { storeToRefs } from "pinia";
+import { useMoviesStore } from "../store/store";
+const store = useMoviesStore();
+const { isSortedByName, isSortedByYear } = storeToRefs(store);
+</script>
 <template>
   <div class="container">
     <h2 class="title">Фильмы</h2>
     <div class="sort">
       <label class="sort__label"
-        ><input type="checkbox" class="sort__checkbox" />Отсортировать по
-        названию</label
+        ><input
+          type="checkbox"
+          class="sort__checkbox"
+          v-model="isSortedByName"
+          @change="isSortedByYear = false"
+        />Отсортировать по названию</label
       >
       <label class="sort__label"
-        ><input type="checkbox" class="sort__checkbox" />Отсортировать по
-        году</label
+        ><input
+          type="checkbox"
+          class="sort__checkbox"
+          v-model="isSortedByYear"
+          @change="isSortedByName = false"
+        />Отсортировать по году</label
       >
     </div>
   </div>

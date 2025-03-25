@@ -6,14 +6,14 @@ interface ICollapse {
 }
 
 interface IMovie {
-  actors: string[];
+  actors: string[] | null;
   age: string | null;
   budget: string | null;
   collapse: ICollapse;
   composers: string[] | null;
   countries: string[] | null;
   description: string | null;
-  directors: string[];
+  directors: string[] | null;
   editors: string[] | null;
   fees_russia: string | null;
   fees_world: string | null;
@@ -42,7 +42,7 @@ interface IMovie {
   type: string | null;
   url: string | null;
   videocdn: ICollapse;
-  year: number | null;
+  year: number;
 }
 
 interface IMovieData {

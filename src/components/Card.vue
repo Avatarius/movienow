@@ -10,11 +10,13 @@ const yearAndGenres = computed(() => {
   return `${movie.year} ${genresAsString}`;
 });
 const directors = computed(() => {
+  if (!movie.directors) return "";
   const directorsAsString = movie.directors.join(", ");
   const title = movie.directors.length > 1 ? "режиссёры" : "режиссёр";
   return `${title}: ${directorsAsString}`;
 });
 const actors = computed(() => {
+  if (!movie.actors) return "";
   const actorsAsString = movie.actors.join(", ");
   return actorsAsString;
 });
