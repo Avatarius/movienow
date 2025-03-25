@@ -46,6 +46,7 @@ const actors = computed(() => {
   grid-template-columns: 168px 1fr;
   background-color: #4d4747;
   box-shadow: 0px 4px 4px 0px #00000040;
+  transition: translate 0.2s ease-out, box-shadow 0.2s ease-out;
   cursor: pointer;
   position: relative;
   &:hover {
