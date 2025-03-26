@@ -13,7 +13,9 @@ onMounted(() => {
 <template>
   <ul class="list">
     <li v-for="movie in resultList" :key="movie.id">
-      <Card :movie="movie" />
+      <RouterLink :to="{ name: 'MovieDetails', params: { id: movie.id } }">
+        <Card :movie="movie" />
+      </RouterLink>
     </li>
   </ul>
 </template>

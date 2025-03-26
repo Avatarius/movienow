@@ -21,6 +21,9 @@ export const useMoviesStore = defineStore("movies", () => {
     }
     return movieList.value;
   });
+  const getMovieById = computed(() => {
+    return (id: number) => movieList.value.find((movie) => movie.id === id);
+  });
   async function fetchMovies() {
     try {
       const data = await fetchMoviesApi();
@@ -36,6 +39,7 @@ export const useMoviesStore = defineStore("movies", () => {
     isSortedByName,
     isSortedByYear,
     resultList,
+    getMovieById,
     fetchMovies,
     print,
   };

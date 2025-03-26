@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import Header from "./components/Header.vue";
-import CardList from "./components/CardList.vue";
 import ControlPanel from "./components/ControlPanel.vue";
 </script>
 <template>
-  <Header/>
+  <Header />
   <main class="main">
-    <ControlPanel/>
-    <CardList/>
+    <ControlPanel />
+    <RouterView />
   </main>
 </template>
 
