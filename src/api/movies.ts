@@ -1,7 +1,7 @@
 import axios from "axios";
-import type { IMovieData } from "../types/movies";
+import type { IMovieData, IMovieListData } from "../types/movies";
 
-const API_BASE_URL = "https://mashroom-movies-api.netlify.app/api/movies";
+const API_BASE_URL = "https://mashroom-movies-api.netlify.app/api";
 
 export function request<T>(url: string) {
   return axios
@@ -20,10 +20,9 @@ export function request<T>(url: string) {
 }
 
 export function fetchMoviesApi() {
-  return request<IMovieData>(`${API_BASE_URL}`);
+  return request<IMovieListData>(`${API_BASE_URL}/movies`);
 }
 
-/* export function fetchMovieById(id: number) {
-  return request<IMovie>(`${API_BASE_URL}/${id}`);
+export function fetchMovieByIdApi(id: number) {
+  return request<IMovieData>(`${API_BASE_URL}/movie/${id}`);
 }
- */

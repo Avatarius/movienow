@@ -15,9 +15,7 @@ onMounted(() => {
 <template>
   <ControlPanel />
   <section>
-    <div v-if="isLoading" class="loader-container">
-      <Loader />
-    </div>
+    <Loader v-if="isLoading" />
     <ul class="list" v-else>
       <li v-for="movie in resultList" :key="movie.id">
         <RouterLink :to="{ name: 'MovieDetails', params: { id: movie.id } }">
@@ -33,9 +31,5 @@ onMounted(() => {
 
 .list {
   @include layout.flex(column, center, stretch, 24px);
-}
-.loader-container {
-  @include layout.flex(row, center, center);
-  margin-block-start: 248px;
 }
 </style>

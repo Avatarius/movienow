@@ -1,10 +1,11 @@
 import { defineStore } from "pinia";
 import type { IMovie } from "../types/movies";
-import { fetchMoviesApi } from "../api/movies";
+import { fetchMovieByIdApi, fetchMoviesApi } from "../api/movies";
 import { computed, ref } from "vue";
 
 export const useMoviesStore = defineStore("movies", () => {
   const movieList = ref<IMovie[]>([]);
+  const currentMovie = ref<IMovie | null>(null);
   const isError = ref<string | null>(null);
   const isLoading = ref<boolean>(true);
   const isSortedByName = ref<boolean>(false);
@@ -36,8 +37,20 @@ export const useMoviesStore = defineStore("movies", () => {
       isLoading.value = false;
     }
   }
+  async function fetchMovieByid(id: number) {
+    try {
+      const data = await fetchMovieByIdApi(id);
+      currentMovie.value = data.data;
+      isError.value = null;
+    } catch (err) {
+      isError.value = "error";
+    } finally {
+      isLoading.value = false;
+    }
+  }
   return {
     movieList,
+    currentMovie,
     isError,
     isLoading,
     isSortedByName,
@@ -45,6 +58,7 @@ export const useMoviesStore = defineStore("movies", () => {
     resultList,
     getMovieById,
     fetchMovies,
+    fetchMovieByid,
     print,
   };
 });

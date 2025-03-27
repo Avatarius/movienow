@@ -1,12 +1,20 @@
 <script setup lang="ts"></script>
 <template>
   <div class="container">
-    <div class="circle circle_black"></div>
-    <div class="circle circle_red"></div>
+    <div class="loader-container">
+      <div class="circle circle_black"></div>
+      <div class="circle circle_red"></div>
+    </div>
   </div>
+
 </template>
 <style scoped lang="scss">
+@use '../styles/layout.scss';
 .container {
+   @include layout.flex(row, center, center);
+   margin-block-start: 248px;
+}
+.loader-container {
   inline-size: 136px;
   block-size: 136px;
   position: relative;

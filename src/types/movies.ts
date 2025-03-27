@@ -45,9 +45,14 @@ interface IMovie {
   year: number;
 }
 
-interface IMovieData {
+interface IMovieListData {
   success: boolean;
   data: IMovie[];
 }
 
-export type { IMovieData, IMovie };
+interface IMovieData {
+  success: boolean;
+  data: IMovie;
+}
+
+export type { IMovieListData, IMovieData, IMovie };
