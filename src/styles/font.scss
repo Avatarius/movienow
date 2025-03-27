@@ -36,7 +36,6 @@
   color: #fff;
 }
 
-
 @mixin controlPanelTitle {
   font-weight: 500;
   font-size: 32px;
@@ -49,4 +48,12 @@
   font-size: 16px;
   line-height: 16px;
   color: #c4c4c4;
+}
+
+@mixin movieDetailsPanelLink {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  text-decoration: underline;
+  color: #ff5252fa;
 }

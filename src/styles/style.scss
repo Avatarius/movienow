@@ -4,7 +4,9 @@ body {
   background-color: #363232;
 }
 
-
 a {
   text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
 }
