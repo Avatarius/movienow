@@ -33,7 +33,7 @@ export const useMoviesStore = defineStore("movies", () => {
     } catch (err) {
       isError.value = "error";
     } finally {
-      // isLoading.value = false;
+      isLoading.value = false;
     }
   }
   return {

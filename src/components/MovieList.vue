@@ -15,7 +15,7 @@ onMounted(() => {
 <template>
   <ControlPanel />
   <section>
-    <div v-if="isLoading">
+    <div v-if="isLoading" class="loader-container">
       <Loader />
     </div>
     <ul class="list" v-else>
@@ -33,5 +33,9 @@ onMounted(() => {
 
 .list {
   @include layout.flex(column, center, stretch, 24px);
+}
+.loader-container {
+  @include layout.flex(row, center, center);
+  margin-block-start: 248px;
 }
 </style>
