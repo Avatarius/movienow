@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router';
 </script>
 <template>
   <section class="container">
-    <RouterLink to="/" class="link">Назад к списку</RouterLink>
+    <RouterLink :to="{ name: 'Home' }" class="link">Назад к списку</RouterLink>
   </section>
 </template>
 <style scoped lang="scss">
