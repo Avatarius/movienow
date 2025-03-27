@@ -4,8 +4,9 @@ import { useMoviesStore } from "../store/store";
 import { storeToRefs } from "pinia";
 import Card from "./Card.vue";
 import ControlPanel from "./ControlPanel.vue";
+import Loader from "./Loader.vue";
 const store = useMoviesStore();
-const { resultList } = storeToRefs(store);
+const { resultList, isLoading } = storeToRefs(store);
 
 onMounted(() => {
   store.fetchMovies();
@@ -14,7 +15,10 @@ onMounted(() => {
 <template>
   <ControlPanel />
   <section>
-    <ul class="list">
+    <div v-if="isLoading">
+      <Loader />
+    </div>
+    <ul class="list" v-else>
       <li v-for="movie in resultList" :key="movie.id">
         <RouterLink :to="{ name: 'MovieDetails', params: { id: movie.id } }">
           <Card :movie="movie" :is-hover-anim="true" />

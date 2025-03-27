@@ -6,6 +6,7 @@ import { computed, ref } from "vue";
 export const useMoviesStore = defineStore("movies", () => {
   const movieList = ref<IMovie[]>([]);
   const isError = ref<string | null>(null);
+  const isLoading = ref<boolean>(true);
   const isSortedByName = ref<boolean>(false);
   const isSortedByYear = ref<boolean>(false);
   const resultList = computed(() => {
@@ -31,11 +32,14 @@ export const useMoviesStore = defineStore("movies", () => {
       isError.value = null;
     } catch (err) {
       isError.value = "error";
+    } finally {
+      // isLoading.value = false;
     }
   }
   return {
     movieList,
     isError,
+    isLoading,
     isSortedByName,
     isSortedByYear,
     resultList,
