@@ -3,8 +3,9 @@ import { computed } from "vue";
 import type { IMovie } from "../types/movies";
 interface ICardProps {
   movie: IMovie;
+  isHoverAnim: boolean;
 }
-const { movie } = defineProps<ICardProps>();
+const { movie, isHoverAnim } = defineProps<ICardProps>();
 const yearAndGenres = computed(() => {
   const genresAsString = movie.genres?.join(", ");
   return `${movie.year} ${genresAsString}`;
@@ -22,7 +23,7 @@ const actors = computed(() => {
 });
 </script>
 <template>
-  <article class="container">
+  <article class="container" :class="{ container_hover: isHoverAnim }">
     <div class="poster">
       <img :src="movie.poster" :alt="movie.title" class="poster__img" />
     </div>
@@ -31,8 +32,7 @@ const actors = computed(() => {
       <p class="info__text_accent info__text_genres">{{ yearAndGenres }}</p>
       <p class="info__text_accent info__text_directors">{{ directors }}</p>
       <p>
-        <span class="info__text_accent">Актёры:</span
-        ><span class="info__text_actors">{{ actors }}</span>
+        <span class="info__text_accent">Актёры:</span><span class="info__text_actors">{{ actors }}</span>
       </p>
       <p class="info__text_description">{{ movie.description }}</p>
     </div>
@@ -41,6 +41,7 @@ const actors = computed(() => {
 <style scoped lang="scss">
 @use "../styles/font.scss";
 @use "../styles/layout.scss";
+
 .container {
   display: grid;
   grid-template-columns: 168px 1fr;
@@ -49,15 +50,18 @@ const actors = computed(() => {
   transition: translate 0.2s ease-out, box-shadow 0.2s ease-out;
   cursor: pointer;
   position: relative;
-  &:hover {
+
+  &_hover:hover {
     translate: 0 -8px;
     box-shadow: 0px 8px 20px 0px #00000059;
   }
 }
+
 .poster {
   @include layout.flex(row, center, center);
   background-color: #c4c4c4;
   inline-size: 168px;
+
   &__img {
     inline-size: 112px;
     block-size: 168px;
@@ -67,22 +71,27 @@ const actors = computed(() => {
 
 .info {
   padding: 32px 0 32px 24px;
+
   &__title {
     @include font.cardTitle();
     margin-block-end: 12px;
   }
+
   &__text {
     &_accent {
       @include font.cardAccent();
     }
+
     &_genres,
     &_directors {
       margin-block-end: 8px;
     }
+
     &_description {
       @include font.CardDescription();
       margin-block-start: 14px;
     }
+
     &_actors {
       @include font.cardActors();
     }

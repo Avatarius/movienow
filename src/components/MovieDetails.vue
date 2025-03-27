@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
-import { useMoviesStore } from '../store/store';
-import Card from './Card.vue';
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { storeToRefs } from "pinia";
+import { useMoviesStore } from "../store/store";
+import Card from "./Card.vue";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 const store = useMoviesStore();
-const {getMovieById} = storeToRefs(store);
+const { getMovieById } = storeToRefs(store);
 const route = useRoute();
 const movie = computed(() => {
   return getMovieById.value(Number(route.params.id));
-})
+});
 </script>
 <template>
   <div>
-    <Card v-if="movie" :movie="movie"/>
+    <Card v-if="movie" :movie="movie" :is-hover-anim="false" />
   </div>
 </template>
-<style scoped>
-</style>
+<style scoped></style>

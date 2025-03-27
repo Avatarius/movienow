@@ -14,13 +14,14 @@ onMounted(() => {
   <ul class="list">
     <li v-for="movie in resultList" :key="movie.id">
       <RouterLink :to="{ name: 'MovieDetails', params: { id: movie.id } }">
-        <Card :movie="movie" />
+        <Card :movie="movie" :is-hover-anim="true" />
       </RouterLink>
     </li>
   </ul>
 </template>
 <style scoped lang="scss">
 @use "../styles/layout.scss";
+
 .list {
   @include layout.flex(column, center, stretch, 24px);
 }
