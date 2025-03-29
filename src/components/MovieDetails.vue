@@ -25,17 +25,18 @@ onMounted(() => {
 });
 </script>
 <template>
-  <MovieDetailsPanel />
-  <section>
-    <Loader v-if="isLoading"/>
-    <template v-else>
-      <Card v-if="movie" :movie="movie" :is-hover-anim="false" />
-    </template>
+  <div>
+    <MovieDetailsPanel />
+    <section>
+      <Loader v-if="isLoading" />
+      <template v-else>
+        <Card v-if="movie" :movie="movie" :is-hover-anim="false" />
+      </template>
 
-  </section>
+    </section>
+  </div>
+
 </template>
 <style scoped>
-.loader-container  {
-
-}
+.loader-container {}
 </style>

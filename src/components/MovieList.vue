@@ -13,17 +13,20 @@ onMounted(() => {
 });
 </script>
 <template>
-  <ControlPanel />
-  <section>
-    <Loader v-if="isLoading" />
-    <ul class="list" v-else>
-      <li v-for="movie in resultList" :key="movie.id">
-        <RouterLink :to="{ name: 'MovieDetails', params: { id: movie.id } }">
-          <Card :movie="movie" :is-hover-anim="true" />
-        </RouterLink>
-      </li>
-    </ul>
-  </section>
+  <div>
+    <ControlPanel />
+    <section>
+      <Loader v-if="isLoading" />
+      <ul class="list" v-else>
+        <li v-for="movie in resultList" :key="movie.id">
+          <RouterLink :to="{ name: 'MovieDetails', params: { id: movie.id } }">
+            <Card :movie="movie" :is-hover-anim="true" />
+          </RouterLink>
+        </li>
+      </ul>
+    </section>
+  </div>
+
 
 </template>
 <style scoped lang="scss">
