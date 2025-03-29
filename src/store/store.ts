@@ -6,10 +6,11 @@ import { computed, ref } from "vue";
 export const useMoviesStore = defineStore("movies", () => {
   const movieList = ref<IMovie[]>([]);
   const currentMovie = ref<IMovie | null>(null);
-  const isError = ref<string | null>(null);
   const isLoading = ref<boolean>(true);
   const isSortedByName = ref<boolean>(false);
   const isSortedByYear = ref<boolean>(false);
+  const offsetY = ref<number>(0);
+
   const resultList = computed(() => {
     const array = [...movieList.value];
     if (isSortedByName.value) {
@@ -30,9 +31,7 @@ export const useMoviesStore = defineStore("movies", () => {
     try {
       const data = await fetchMoviesApi();
       movieList.value = data.data;
-      isError.value = null;
     } catch (err) {
-      isError.value = "error";
     } finally {
       isLoading.value = false;
     }
@@ -41,24 +40,26 @@ export const useMoviesStore = defineStore("movies", () => {
     try {
       const data = await fetchMovieByIdApi(id);
       currentMovie.value = data.data;
-      isError.value = null;
     } catch (err) {
-      isError.value = "error";
     } finally {
       isLoading.value = false;
     }
   }
+  function storeOffsetY(offset: number) {
+    offsetY.value = offset;
+  }
+
   return {
     movieList,
     currentMovie,
-    isError,
     isLoading,
     isSortedByName,
     isSortedByYear,
+    offsetY,
     resultList,
     getMovieById,
     fetchMovies,
     fetchMovieByid,
-    print,
+    storeOffsetY,
   };
 });

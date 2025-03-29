@@ -5,7 +5,7 @@ import Header from "./components/Header.vue";
   <Header />
   <main class="main">
     <RouterView v-slot="{ Component }">
-      <Transition name="slide" mode="out-in">
+      <Transition name="" mode="out-in">
         <component :is="Component" />
       </Transition>
     </RouterView>
