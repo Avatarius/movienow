@@ -18,7 +18,7 @@ function redirect(movie: IMovie, index: number) {
     const ulOffset = ulRef.value.offsetTop
     const liOffset = (liArrayRef.value[index].offsetTop);
     const resultOffset = ((ulOffset - liOffset) * -1) + 45;
-    store.storeOffsetY(resultOffset)
+    store.storeOffsetY(resultOffset);
   }
   router.push({ name: "MovieDetails", params: { id: movie.id } });
 
@@ -30,17 +30,14 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div>
-    <ControlPanel />
-    <section>
-      <Loader v-if="isLoading" />
-      <ul class="list" v-else ref="list">
-        <li v-for="(movie, index) in resultList" :key="movie.id" ref="li">
-          <Card :movie="movie" :is-hover-anim="false" @click="redirect(movie, index)" />
-        </li>
-      </ul>
-    </section>
-  </div>
+  <section>
+    <Loader v-if="isLoading" />
+    <ul class="list" v-else ref="list">
+      <li v-for="(movie, index) in resultList" :key="movie.id" ref="li">
+        <Card :movie="movie" :is-hover-anim="false" @click="redirect(movie, index)" />
+      </li>
+    </ul>
+  </section>
 
 
 </template>

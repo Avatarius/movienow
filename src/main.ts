@@ -11,10 +11,23 @@ import {
 } from "vue-router";
 import MovieDetails from "./components/MovieDetails.vue";
 import MovieList from "./components/MovieList.vue";
+import ControlPanel from "./components/ControlPanel.vue";
+import MovieDetailsPanel from "./components/MovieDetailsPanel.vue";
 
 const routes: Array<RouteRecordRaw> = [
-  { path: "/", name: "Home", component: MovieList },
-  { path: "/movie/:id", name: "MovieDetails", component: MovieDetails },
+  {
+    path: "/",
+    name: "Home",
+    components: {
+      panel: ControlPanel,
+      default: MovieList,
+    },
+  },
+  {
+    path: "/movie/:id",
+    name: "MovieDetails",
+    components: { panel: MovieDetailsPanel, default: MovieDetails },
+  },
 ];
 
 const router = createRouter({ history: createWebHistory(), routes: routes });
