@@ -19,7 +19,8 @@ import Header from "./components/Header.vue";
 
 <style scoped lang="scss">
 .main {
-  margin: 40px 260px 0;
+  margin: 40px auto 0;
+  max-inline-size: 1400px;
   position: relative;
 }
 .opacity-enter-from, .opacity-leave-to {

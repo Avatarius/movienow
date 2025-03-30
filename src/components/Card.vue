@@ -28,7 +28,13 @@ const actors = computed(() => {
       <img :src="movie.poster" :alt="movie.title" class="poster__img" />
     </div>
     <div class="info">
-      <h3 class="info__title">{{ movie.title }}</h3>
+      <div class="info__title-container">
+        <h3 class="info__title">{{ movie.title }}</h3>
+        <div class="additional" v-if="movie.collapse.duration">
+          <p class="additional__text">{{ movie.collapse.duration[0] }}</p>
+          <div class="additional__img"></div>
+        </div>
+      </div>
       <p class="info__text_accent info__text_genres">{{ yearAndGenres }}</p>
       <p class="info__text_accent info__text_directors">{{ directors }}</p>
       <p>
@@ -36,6 +42,7 @@ const actors = computed(() => {
       </p>
       <p class="info__text_description">{{ movie.description }}</p>
     </div>
+
   </article>
 </template>
 <style scoped lang="scss">
@@ -71,6 +78,9 @@ const actors = computed(() => {
 
 .info {
   padding: 32px 0 32px 24px;
+  &__title-container {
+    @include layout.flex(row, space-between, center);
+  }
 
   &__title {
     @include font.cardTitle();
@@ -95,6 +105,22 @@ const actors = computed(() => {
     &_actors {
       @include font.cardActors();
     }
+  }
+}
+
+.additional {
+  background: linear-gradient(100deg, transparent 5px, #c4c4c4 0);
+  padding: 3px 15px 3px 18px;
+  @include layout.flex(row, center, center, 12px);
+  margin-block-end: 14px;
+  &__text {
+    @include font.CardAdditional();
+  }
+  &__img {
+    inline-size: 24px;
+    block-size: 24px;
+    background: center / cover no-repeat url('../../public/images/theaters.svg');
+    padding: 3px 4px;
   }
 }
 </style>

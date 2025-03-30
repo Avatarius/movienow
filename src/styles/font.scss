@@ -36,6 +36,13 @@
   color: #fff;
 }
 
+@mixin CardAdditional {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+
 @mixin controlPanelTitle {
   font-weight: 500;
   font-size: 32px;
