@@ -34,7 +34,7 @@ onMounted(() => {
     <Loader v-if="isLoading" />
     <ul class="list" v-else ref="list">
       <li v-for="(movie, index) in resultList" :key="movie.id" ref="li">
-        <Card :movie="movie" :is-hover-anim="false" @click="redirect(movie, index)" />
+        <Card :movie="movie" :is-hover-anim="true" @click="redirect(movie, index)" />
       </li>
     </ul>
   </section>

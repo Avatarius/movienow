@@ -26,7 +26,7 @@ import Header from "./components/Header.vue";
   opacity: 0;
 }
 .opacity-enter-active, .opacity-leave-active {
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.25s linear;
 }
 
 </style>
