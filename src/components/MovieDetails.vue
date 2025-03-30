@@ -2,7 +2,7 @@
 import { storeToRefs } from "pinia";
 import { useMoviesStore } from "../store/store";
 import Card from "./Card.vue";
-import { computed, onMounted, ref, watchEffect } from "vue";
+import { computed, nextTick, onMounted, ref, useTemplateRef, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import Loader from "./Loader.vue";
 const store = useMoviesStore();
@@ -20,32 +20,44 @@ const movie = computed(() => {
   }
 });
 const styles = computed(() => {
-  return {translate: `0 200px`};
+  return { translate: `0 ${offsetY.value}px` };
 })
 onMounted(() => {
   if (!movieList.value.length) {
     store.fetchMovieByid(Number(route.params.id));
   }
 });
-/* watchEffect(() => {
+watchEffect(() => {
   if (movie.value && !isLoading.value) {
     setTimeout(() => {
       store.storeOffsetY(0);
     }, 100);
   }
-}) */
+})
+
 </script>
 <template>
   <section>
     <Loader v-if="isLoading" />
     <template v-else>
-      <Card v-if="movie" :movie="movie" :is-hover-anim="false" :style="styles" />
+      <div class="container" :style="styles">
+        <Card v-if="movie" :movie="movie" :is-hover-anim="false" />
+      </div>
+
     </template>
 
   </section>
 
 </template>
 <style scoped>
+.container {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: 40px;
+  z-index: 3;
+  transition: translate 0.5s ease-in-out;
+}
+
 .slide-enter-from,
 .slide-leave-to {
   opacity: 0;

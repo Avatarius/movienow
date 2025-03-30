@@ -9,19 +9,24 @@ import Header from "./components/Header.vue";
         <component :is="Component" />
       </Transition>
     </RouterView>
-    <RouterView/>
+    <RouterView v-slot="{ Component }">
+      <Transition name="slide" mode="out-in">
+        <component :is="Component" />
+      </Transition>
+    </RouterView>
   </main>
 </template>
 
 <style scoped lang="scss">
 .main {
   margin: 40px 260px 0;
+  position: relative;
 }
 .opacity-enter-from, .opacity-leave-to {
   opacity: 0;
 }
 .opacity-enter-active, .opacity-leave-active {
-  transition: opacity 0.2s linear;
+  transition: opacity 0.2s ease-in-out;
 }
 
 </style>
