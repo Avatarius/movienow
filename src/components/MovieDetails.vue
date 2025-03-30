@@ -2,11 +2,12 @@
 import { storeToRefs } from "pinia";
 import { useMoviesStore } from "../store/store";
 import Card from "./Card.vue";
-import { computed, nextTick, onMounted, ref, useTemplateRef, watchEffect } from "vue";
+import { computed, onMounted, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import Loader from "./Loader.vue";
+import MovieNotFound from "./MovieNotFound.vue";
 const store = useMoviesStore();
-const { getMovieById, movieList, currentMovie, offsetY, isLoading } = storeToRefs(store);
+const { getMovieById, movieList, currentMovie, offsetY, isLoading, isError } = storeToRefs(store);
 
 const route = useRoute();
 
@@ -40,9 +41,10 @@ watchEffect(() => {
   <section>
     <Loader v-if="isLoading" />
     <template v-else>
-      <div class="container" :style="styles">
+      <div class="container" :style="styles" v-if="!isError">
         <Card v-if="movie" :movie="movie" :is-hover-anim="false" />
       </div>
+      <MovieNotFound v-else/>
 
     </template>
 

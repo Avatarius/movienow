@@ -7,6 +7,7 @@ export const useMoviesStore = defineStore("movies", () => {
   const movieList = ref<IMovie[]>([]);
   const currentMovie = ref<IMovie | null>(null);
   const isLoading = ref<boolean>(true);
+  const isError = ref<boolean>(false);
   const isSortedByName = ref<boolean>(false);
   const isSortedByYear = ref<boolean>(false);
   const offsetY = ref<number>(0);
@@ -30,8 +31,14 @@ export const useMoviesStore = defineStore("movies", () => {
   async function fetchMovies() {
     try {
       const data = await fetchMoviesApi();
-      movieList.value = data.data;
+      if (data.data) {
+        movieList.value = data.data;
+        isError.value = false;
+      } else {
+        isError.value = true;
+      }
     } catch (err) {
+      isError.value = true;
     } finally {
       isLoading.value = false;
     }
@@ -39,8 +46,14 @@ export const useMoviesStore = defineStore("movies", () => {
   async function fetchMovieByid(id: number) {
     try {
       const data = await fetchMovieByIdApi(id);
-      currentMovie.value = data.data;
+      if (data.data) {
+        currentMovie.value = data.data;
+        isError.value = false;
+      } else {
+        isError.value = true;
+      }
     } catch (err) {
+      isError.value = true;
     } finally {
       isLoading.value = false;
     }
@@ -53,6 +66,7 @@ export const useMoviesStore = defineStore("movies", () => {
     movieList,
     currentMovie,
     isLoading,
+    isError,
     isSortedByName,
     isSortedByYear,
     offsetY,
