@@ -9,8 +9,6 @@ const transitionName = computed(() => {
   const transition = route.meta.transition;
   return typeof transition === 'string' ? transition : '';
 });
-console.log(transitionName);
-
 
 </script>
 <template>

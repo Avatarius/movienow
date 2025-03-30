@@ -36,8 +36,8 @@ const actors = computed(() => {
         </div>
       </div>
       <p class="info__text_accent info__text_genres">{{ yearAndGenres }}</p>
-      <p class="info__text_accent info__text_directors">{{ directors }}</p>
-      <p>
+      <p class="info__text_accent info__text_directors" v-if="directors">{{ directors }}</p>
+      <p v-if="actors">
         <span class="info__text_accent">Актёры:</span><span class="info__text_actors">{{ actors }}</span>
       </p>
       <p class="info__text_description">{{ movie.description }}</p>
@@ -52,7 +52,7 @@ const actors = computed(() => {
 .container {
   display: grid;
   grid-template-columns: 168px 1fr;
-  background-color: #4d4747;
+  background-color: var(--background-card-color, #4d4747);
   box-shadow: 0px 4px 4px 0px #00000040;
   transition: translate 0.2s ease-out, box-shadow 0.2s ease-out;
   cursor: pointer;
@@ -66,7 +66,7 @@ const actors = computed(() => {
 
 .poster {
   @include layout.flex(row, center, center);
-  background-color: #c4c4c4;
+  background-color: var(--theme-gray-light, #c4c4c4);
   inline-size: 168px;
 
   &__img {
@@ -78,6 +78,7 @@ const actors = computed(() => {
 
 .info {
   padding: 32px 0 32px 24px;
+
   &__title-container {
     @include layout.flex(row, space-between, center);
   }
@@ -104,18 +105,22 @@ const actors = computed(() => {
 
     &_actors {
       @include font.cardActors();
+      margin-inline-start: 8px;
     }
   }
 }
 
 .additional {
-  background: linear-gradient(100deg, transparent 5px, #c4c4c4 0);
+  background: linear-gradient(100deg, transparent 5px, var(--theme-gray-light, #c4c4c4) 0);
   padding: 3px 15px 3px 18px;
   @include layout.flex(row, center, center, 12px);
   margin-block-end: 14px;
+
   &__text {
     @include font.CardAdditional();
+    color: var(--theme-dark, #000);
   }
+
   &__img {
     inline-size: 24px;
     block-size: 24px;

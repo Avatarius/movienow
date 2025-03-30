@@ -10,11 +10,12 @@
 @use "../styles/font.scss";
 
 .header {
-  background-color: #fa2828fa;
+  background-color: var(--background-header-color, #fa2828fa);
   padding-block: 36px 16px;
 
   &__title {
     @include font.header();
+    color: var(--theme-dark, #000);
   }
 }
 </style>

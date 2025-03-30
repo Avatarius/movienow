@@ -6,14 +6,15 @@
       <div class="circle circle_red"></div>
     </div>
   </div>
-
 </template>
 <style scoped lang="scss">
-@use '../styles/layout.scss';
+@use "../styles/layout.scss";
+
 .container {
-   @include layout.flex(row, center, center);
-   margin-block-start: 248px;
+  @include layout.flex(row, center, center);
+  margin-block-start: 248px;
 }
+
 .loader-container {
   inline-size: 136px;
   block-size: 136px;
@@ -41,7 +42,7 @@
     inset-block-end: 16px;
 
     &::before {
-      border: 3.57px solid #000;
+      border: 3.57px solid var(--loader-border-a-color, #000);
       border-block-end: none;
     }
   }
@@ -55,7 +56,7 @@
     animation: spin_reverse 1.2s linear infinite;
 
     &::before {
-      border: 3px solid #fa2828fa;
+      border: 3px solid var(--loader-border-b-color, #fa2828fa);
       border-block-end: none;
     }
   }

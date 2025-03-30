@@ -10,7 +10,7 @@ import { RouterLink } from 'vue-router';
 @use '../styles/font.scss';
 
 .container {
-  border-block-end: 1px solid #c4c4c4;
+  border-block-end: 1px solid var(--theme-gray-light, #c4c4c4);
   padding-block-end: 20px;
   margin-block-end: 40px;
 }

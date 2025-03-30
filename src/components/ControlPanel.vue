@@ -21,7 +21,7 @@ const { isSortedByName, isSortedByYear } = storeToRefs(store);
 
 .container {
   padding-block-end: 16px;
-  border-block-end: 1px solid #c4c4c4;
+  border-block-end: 1px solid var(--theme-gray-light, #c4c4c4);
   margin-block-end: 40px;
 }
 
@@ -45,7 +45,7 @@ const { isSortedByName, isSortedByYear } = storeToRefs(store);
     block-size: 15px;
     aspect-ratio: 1;
     background-color: transparent;
-    border: 1px solid #c4c4c4;
+    border: 1px solid var(--theme-gray-light, #c4c4c4);
 
     &::after {
       content: "";
@@ -58,7 +58,7 @@ const { isSortedByName, isSortedByYear } = storeToRefs(store);
     }
 
     &:checked {
-      background-color: #ff5252fa;
+      background-color: var(--theme-accent, #ff5252fa);
       border: none;
     }
 

@@ -11,7 +11,7 @@
   font-weight: 700;
   font-size: 36px;
   line-height: 36px;
-  color: #fff;
+  color: var(--color-main, #fff);
 }
 
 @mixin cardAccent {
@@ -19,21 +19,21 @@
   font-size: 12px;
   line-height: 12px;
   text-transform: uppercase;
-  color: #988f8f;
+  color: var(--color-secondary, #988f8f);
 }
 
 @mixin cardActors {
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
-  color: #fff;
+  color: var(--color-additional, #e5e5e5);
 }
 
 @mixin CardDescription {
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  color: #fff;
+  color: var(--color-additional, #e5e5e5);
 }
 
 @mixin CardAdditional {
@@ -41,20 +41,21 @@
   font-size: 12px;
   line-height: 12px;
   text-transform: uppercase;
+  color: #000;
 }
 
 @mixin controlPanelTitle {
   font-weight: 500;
   font-size: 32px;
   line-height: 32px;
-  color: #fff;
+  color: var(--color-main, #fff);
 }
 
 @mixin controlPanelLabel {
   font-weight: 400;
   font-size: 16px;
   line-height: 16px;
-  color: #c4c4c4;
+  color: var(--theme-gray-light, #c4c4c4);
 }
 
 @mixin movieDetailsPanelLink {
@@ -62,12 +63,12 @@
   font-size: 20px;
   line-height: 20px;
   text-decoration: underline;
-  color: #ff5252fa;
+  color: var(--theme-accent, #ff5252fa);
 }
 
 @mixin notFound {
   font-weight: 500;
   font-size: 32px;
   line-height: 32px;
-  color: #fff;
+  color: var(--color-main, #fff);
 }

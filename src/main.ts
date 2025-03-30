@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+import "./styles/variables.scss";
 import "./fonts/font.scss";
 import "./styles/reset.scss";
 import "./styles/style.scss";
@@ -32,16 +33,14 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({ history: createWebHistory(), routes: routes });
 
-
 const pinia = createPinia();
 const app = createApp(App);
 
 router.afterEach((to, from) => {
-  const toDepth = to.path.split('/').length
-  const fromDepth = from.path.split('/').length
-  to.meta.transition = toDepth < fromDepth ? 'card-list-opacity' : 'card-list-';
-})
-
+  const toDepth = to.path.split("/").length;
+  const fromDepth = from.path.split("/").length;
+  to.meta.transition = toDepth < fromDepth ? "card-list-opacity" : "card-list-";
+});
 
 app.use(pinia);
 app.use(router);

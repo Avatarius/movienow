@@ -1,12 +1,11 @@
 body {
   font-family: Roboto, sans-serif;
   font-weight: 400;
-  background-color: #363232;
+  background-color: var(--background-main-color, #363232);
+  color: var(--color-main, #fff);
 }
 
 a {
   text-decoration: none;
-  &:visited {
-    color: inherit;
-  }
+  color: inherit;
 }
