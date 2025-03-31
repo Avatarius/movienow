@@ -40,7 +40,7 @@ const actors = computed(() => {
       <p v-if="actors">
         <span class="info__text_accent">Актёры:</span><span class="info__text_actors">{{ actors }}</span>
       </p>
-      <p class="info__text_description">{{ movie.description }}</p>
+      <p class="info__text_description" v-if="movie.description">{{ movie.description }}</p>
     </div>
 
   </article>

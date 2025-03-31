@@ -41,7 +41,7 @@ onMounted(() => {
     <Loader v-if="isLoading" />
     <MovieNotFound v-else-if="isError"/>
     <ul class="list" v-else ref="list">
-      <li v-for="(movie, index) in resultList" :key="movie.id" ref="li" :data-id="movie.id">
+      <li v-for="(movie) in resultList" :key="movie.id" ref="li" :data-id="movie.id">
         <Card :movie="movie" :is-hover-anim="true" @click="redirect(movie)" />
       </li>
     </ul>
